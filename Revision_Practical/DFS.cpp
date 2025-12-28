@@ -1,36 +1,35 @@
 #include <iostream>
 using namespace std;
 
-int G[10][10], visited[10], n, i, j;
+int G[10][10], visited[10], n;
 
-void DFS(int i) {
-    cout << i << " ";
-    visited[i] = 1;  
+void DFS(int v) {
+    cout << v << " ";
+    visited[v] = 1;
 
-    for (j = 0; j < n; j++) {
-        if (G[i][j] == 1 && visited[j] == 0) {  
-            DFS(j);
+    for(int i = 0; i < n; i++) {
+        if(G[v][i] == 1 && visited[i] == 0) {
+            DFS(i);
         }
     }
 }
 
 int main() {
-    cout << "Enter number of users you want to enter: ";
+    cout << "Enter number of vertices: ";
     cin >> n;
 
-    cout << "Enter adjacency matrix for the social media app:\n";
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
+    cout << "Enter adjacency matrix:\n";
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
             cin >> G[i][j];
         }
-    }
-
-    for (i = 0; i < n; i++)
         visited[i] = 0;
+    }
 
     cout << "DFS Traversal: ";
     DFS(0);
-    cout << endl;
 
     return 0;
 }
+
+
